@@ -27,7 +27,14 @@ extern "C" {
         g_Width = width;
         g_Height = height;
 
-        g_GridSimulation = new GridSimulation(g_Grid, g_prevGrid, g_nextGrid, height, width);
+        g_GridSimulation = new GridSimulation(&g_Grid, &g_prevGrid, &g_nextGrid, height, width);
+    }
+
+    EXPORT void ModifyTile(int x, int y, float du) {
+        if (0 <= y && y < g_Height && 0 <= x && x < g_Width) {
+            g_Grid[(y * g_Width) + x] += du;
+        }
+        
     }
 
     EXPORT int StepHeatNative(float alpha, float dx, float dy, float dt, float* outGrid, int max) {
