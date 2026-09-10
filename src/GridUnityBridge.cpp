@@ -27,7 +27,7 @@ extern "C" {
         g_Width = width;
         g_Height = height;
 
-        g_GridSimulation = new GridSimulation(&g_Grid, &g_prevGrid, &g_nextGrid, height, width);
+        g_GridSimulation = new GridSimulation(g_Grid, g_prevGrid, g_nextGrid, height, width);
     }
 
     EXPORT void ModifyTile(int x, int y, float du) {
