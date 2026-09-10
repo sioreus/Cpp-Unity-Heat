@@ -17,13 +17,15 @@ float GridSimulation::CalculateNeighbors(int x, int y, float dx, float dy) {
     // u_xx = (u(x+dx) - 2u(x) + u(x-dx)) / (dx)^2
     
     // Forward Difference if Left/Top Boundary
-    // Backward Difference if Right/Bottom Boundary
+    // Backward Difference if Right/Bottom Boundary 
+    // We need to have neumman insulated boundary ocnditions for the outer edges no heat enter or leave the boundaries
+    // if on the edge du/dx = 0, in order to satisfy this we reflect the inside neighbor
     // Central Difference if Middle
     if (x == 0) {
-        u_xx = (_grid[(y * _gridCols) + x] - (2 * _grid[(y * _gridCols) + (x + 1)]) + _grid[(y * _gridCols) + (x + 2)]); 
+        u_xx = (_grid[(y * _gridCols) + (x + 1)] - (2 * _grid[(y * _gridCols) + x]) + _grid[(y * _gridCols) + (x + 1)]); 
     }
     else if (x == _gridCols - 1) {
-        u_xx = (_grid[(y * _gridCols) + (x - 2)] - (2 * _grid[(y * _gridCols) + (x - 1)]) + _grid[(y * _gridCols) + x]);
+        u_xx = (_grid[(y * _gridCols) + (x - 1)] - (2 * _grid[(y * _gridCols) + x]) + _grid[(y * _gridCols) + (x - 1)]);
     }
     else {
         u_xx = (_grid[(y * _gridCols) + (x - 1)] - (2 * _grid[(y * _gridCols) + x]) + _grid[(y * _gridCols) + (x + 1)]);
@@ -31,10 +33,10 @@ float GridSimulation::CalculateNeighbors(int x, int y, float dx, float dy) {
     
 
     if (y == 0) {
-        u_yy = (_grid[(y * _gridCols) + x] - (2 * _grid[((y + 1) * _gridCols) + x]) + _grid[((y + 2) * _gridCols) + x]);
+        u_yy = (_grid[((y + 1) * _gridCols) + x] - (2 * _grid[(y * _gridCols) + x]) + _grid[((y + 1) * _gridCols) + x]);
     }
     else if (y == _gridRows - 1) {
-        u_yy = (_grid[((y - 2) * _gridCols) + x] - (2 * _grid[((y - 1) * _gridCols) + x]) + _grid[(y * _gridCols) + x]);
+        u_yy = (_grid[((y - 1) * _gridCols) + x] - (2 * _grid[(y * _gridCols) + x]) + _grid[((y - 1) * _gridCols) + x]);
     }
     else {
         u_yy = (_grid[((y - 1) * _gridCols) + x] - (2 * _grid[(y * _gridCols) + x]) + _grid[((y + 1) * _gridCols) + x]);

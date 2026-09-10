@@ -21,9 +21,9 @@ extern "C" {
         if (g_GridSimulation) {
             delete g_GridSimulation;
         }
-        g_Grid.resize(width * height, 0.0f);
-        g_prevGrid.resize(width * height, 0.0f);
-        g_nextGrid.resize(width * height, 0.0f);
+        g_Grid.assign(width * height, 0.0f);
+        g_prevGrid.assign(width * height, 0.0f);
+        g_nextGrid.assign(width * height, 0.0f);
         g_Width = width;
         g_Height = height;
 
