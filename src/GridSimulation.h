@@ -4,7 +4,7 @@
 
 class GridSimulation {
 public:
-    GridSimulation(std::vector<float>* grid, std::vector<float>* prevGrid, std::vector<float>* nextGrid, int rows, int cols);
+    GridSimulation(std::vector<float>& grid, std::vector<float>& prevGrid, std::vector<float>& nextGrid, int rows, int cols);
     void StepHeat(float alpha, float dx, float dy, float dt);
 private:
     std::vector<float>& _grid;
