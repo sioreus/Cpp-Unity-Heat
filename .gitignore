@@ -1,0 +1,20 @@
+# --- C++ / Linux Build Outputs ---
+*.so
+*.o
+*.out
+*.exe
+*.lib
+*.dll
+
+# --- Unity Generated Folders ---
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]oot/
+
+# --- Operating System Files ---
+.DS_Store
+Thumbs.db
