@@ -1,5 +1,5 @@
 #!/bin/bash
-# Exit immediately if a command exits with a non-zero status
+# Exit immediately if a command exits with a non-zero status Fixed
 set -e
 
 # Create bin directory if it doesn't exist
